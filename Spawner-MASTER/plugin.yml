@@ -1,0 +1,8 @@
+name: Spawner-Mystical
+main: Karanpatel567\Main
+version: 0.1
+api: 3.0.0
+author: Karanpatel567
+commands:
+  spawner:
+    description: The command /spawner
