@@ -16,7 +16,7 @@ use pocketmine\scheduler\PluginTask;
 use pocketmine\utils\Config;
 use onebone\economyapi\EconomyAPI;
 
- //This plugin is made by Karanpatel567. Please do not redistribute! Copyright(©)  All rights reserved//
+ //This plugin is a edit with added codes by Karanpatel567, You can redistribute this and edit/modify it!//
 
 class PTask extends PluginTask {
   
