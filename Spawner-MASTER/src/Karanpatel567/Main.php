@@ -382,7 +382,7 @@ class Main extends PluginBase implements Listener {
            }
            
            public function onBreak(BlockBreakEvent $ev) {
-           
+           if (!$event->isCancelled()){
            $block = $ev->getBlock();
            $player = $ev->getPlayer();
            $tile = $player->getLevel()->getTile($block);
@@ -456,6 +456,7 @@ class Main extends PluginBase implements Listener {
               $player->getInventory()->addItem($item);
               break;
               }
+             }
             }
           }
         }
