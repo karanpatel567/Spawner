@@ -1,5 +1,5 @@
 # Spawner
-Spawner plugin eeit by Karanpatel567
+Spawner plugin edit by Karanpatel567
 
 --------NOTICE--------
 Must have EconomyAPI to use this plugin!
