@@ -2,86 +2,82 @@
 
 namespace spawner;
 
-use pocketmine\plugin\PluginBase;
-use pocketmine\command\CommandSender;
-use pocketmine\command\Command;
-use pocketmine\event\Listener;
-use pocketmine\event\block\BlockPlaceEvent;
-use pocketmine\event\block\BlockBreakEvent;
-use pocketmine\math\Vector3;
-use pocketmine\item\Item;
 use pocketmine\block\Block;
-use pocketmine\tile\MobSpawner;
+use pocketmine\command\{Command, CommandSender};
+use pocketmine\event\block\{BlockBreakEvent, BlockPlaceEvent};
+use pocketmine\event\Listener;
+use pocketmine\item\Item;
+use pocketmine\math\Vector3;
+use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\PluginTask;
+use pocketmine\tile\MobSpawner;
 use pocketmine\utils\Config;
+
 use onebone\economyapi\EconomyAPI;
 
- //This plugin is a edit with added codes by Karanpatel567, You can redistribute this and edit/modify it!//
+# Try to avoid this in your code
+// This plugin is a edit with added codes by Karanpatel567, You can redistribute this and edit/modify it!//
 
-class PTask extends PluginTask {
-  
-  public $plugin;
-  public $block;
-  public $type;
-  
-  public function __construct(Main $plugin, Block $block, $type) {
-    
-    parent::__construct($plugin);
-    $this->plugin = $plugin;
-    $this->block = $block;
-    $this->type = $type;
-    }
-    
-  public function onRun($tick) {
-    
-    $tile = $this->block->getLevel()->getTile(new Vector3($this->block->getX(), $this->block->getY(), $this->block->getZ()));
-    
-    
-    if($tile instanceof MobSpawner) {
-      echo "Translating to $this->type";
-      
-      switch($this->type) {
-        case "zombie":
-        
-      $tile->setEntityId(32);
-      break;
-      
-      case "pigman":
-       $tile->setEntityId(36);
-       break;
-       
-      case "spider":
-       $tile->setEntityId(35);
-       break;
-
-      case "iron_golem":
-      $tile->setEntityId(20);
-      break;
-      
-      case "blaze":
-      $tile->setEntityId(43);
-      break;
-      
-      case "pig":
-      $tile->setEntityId(12);
-      break;
-      
-      case "cow":
-      $tile->setEntityId(11);
-      break;
-      
-      case "chicken":
-      $tile->setEntityId(10);
-      break;
-
-      case "squid":
-      $tile->setEntityId(17);
-      }
-     }
-   }
+class PTask extends PluginTask{
+ 
+ /** @var Main */
+ public $plugin;
+ /** @var Block */
+ public $block;
+ /** @var string */
+ public $type;
+ 
+ public function __construct(Main $plugin, Block $block, string $type){
+  parent::__construct($plugin);
+  $this->plugin = $plugin;
+  $this->block = $block;
+  $this->type = $type;
  }
-class Main extends PluginBase implements Listener {
-  
+ 
+ /**
+  * @param int $tick
+  *
+  * @return void
+  */
+ public function onRun(int $tick){
+  $tile = $this->block->getLevel()->getTile(new Vector3($this->block->getX(), $this->block->getY(), $this->block->getZ()));
+  if($tile instanceof MobSpawner) {
+   echo "Translating to {$this->type}...";
+   switch($this->type){
+    case "zombie":
+     $tile->setEntityId(32);
+     break;
+    case "pigman":
+     $tile->setEntityId(36);
+     break;
+    case "spider":
+     $tile->setEntityId(35);
+     break;
+    case "iron_golem":
+     $tile->setEntityId(20);
+     break;
+    case "blaze":
+     $tile->setEntityId(43);
+     break;
+    case "pig":
+     $tile->setEntityId(12);
+     break;
+    case "cow":
+     $tile->setEntityId(11);
+     break;
+    case "chicken":
+     $tile->setEntityId(10);
+     break;
+    case "squid":
+     $tile->setEntityId(17);
+   }
+  }
+ }
+ 
+}
+
+class Main extends PluginBase implements Listener{
+ 
   public $cfg;
   public $eco;
   public function onEnable() {
