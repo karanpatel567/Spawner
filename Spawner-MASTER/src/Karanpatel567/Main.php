@@ -15,8 +15,11 @@ use pocketmine\utils\Config;
 
 use onebone\economyapi\EconomyAPI;
 
-# Try to avoid this in your code
-// This plugin is a edit with added codes by Karanpatel567, You can redistribute this and edit/modify it!//
+/*
+ *This plugin is a edit with added codes by Karanpatel567,
+ *You can redistribute this and edit/modify it!
+ */
+
 
 class PTask extends PluginTask{
  
